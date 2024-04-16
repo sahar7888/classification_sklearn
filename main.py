@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-
+import pickle
 from sklearn import metrics
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
@@ -27,4 +27,14 @@ y_pred = model.predict(x_test)
 
 print(metrics.accuracy_score(y_test,y_pred))
 """Prediction"""
-model.predict(np.array([[2,3,4,5]]))
+print(model.predict(np.array([[2,3,4,5]])))
+
+"""Save model"""
+
+pickle.dump(model, open("flower-v1.pkl", "wb"))
+
+"load model"
+
+model_pk = pickle.load(open("flower-v1.pkl", "rb"))
+
+print(model_pk .predict(np.array([[2,3,4,5]])))
